@@ -15,7 +15,7 @@ import {
 import { axiosInstance } from '../services/config';
 import { instagram2 } from '../assets/img';
 
-const Register = () => {
+const Login = () => {
   const [inputData, setInputData] = useState({});
   const [error, setError] = useState({});
 
@@ -26,7 +26,7 @@ const Register = () => {
   const submitUser = async event => {
     event.preventDefault();
     try {
-      const res = await axiosInstance.post('/auth/register', inputData);
+      const res = await axiosInstance.post('/auth/login', inputData);
       if (res && res.data) {
         const { token } = res.data;
         cookie.set('token', token);
@@ -46,7 +46,7 @@ const Register = () => {
 
   return (
     <>
-      <Title titleName="Register" />
+      <Title titleName="Login" />
       <FormSign>
         <FormContainer>
           <FormLogoWrapper>
@@ -56,18 +56,10 @@ const Register = () => {
             <FormWrapper>
               <Input
                 type="text"
-                id="username"
-                placeholder="Username"
-                name="username"
-                errorMsg={(error && error.username) || ''}
-                handleChange={handleChange}
-              />
-              <Input
-                type="email"
                 id="inputEmail"
-                placeholder="Email address"
-                name="email"
-                errorMsg={(error && error.email) || ''}
+                placeholder="Email address or Username"
+                name="data"
+                errorMsg={(error && error.data) || ''}
                 handleChange={handleChange}
               />
               <Input
@@ -79,11 +71,11 @@ const Register = () => {
                 handleChange={handleChange}
               />
             </FormWrapper>
-            <Button btnName="Sign up" />
+            <Button btnName="Log in" />
           </form>
           <Footer>
-            Already have an account?
-            <Link to="/login">Log in</Link>
+            Don't have an account?
+            <Link to="/register">Sign Up</Link>
           </Footer>
         </FormContainer>
       </FormSign>
@@ -91,4 +83,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
