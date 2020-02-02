@@ -1,6 +1,7 @@
 import Home from './Pages/Home';
 import Register from './Pages/Register';
 import NotFound from './Pages/NotFound';
+import Login from './Pages/Login';
 
 export default [
   {
@@ -12,6 +13,11 @@ export default [
     name: 'register',
     path: '/register',
     component: Register
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login
   },
   {
     name: 'notfound',

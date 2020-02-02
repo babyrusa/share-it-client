@@ -7,7 +7,7 @@ const Input = ({ type, id, name, placeholder, errorMsg, handleChange }) => (
     <input
       type={type}
       id={id}
-      className="form-control is-invalid"
+      className={errorMsg === '' ? 'form-control' : 'form-control is-invalid'}
       placeholder={placeholder}
       name={name}
       onChange={handleChange}
